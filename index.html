@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>SpendWise</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<div class="shell">
+<header><div class="logo">◆ <span>SpendWise</span></div><button id="addTop">+ Add Transaction</button></header>
+<section class="hero"><div><small>PERSONAL FINANCE</small><h1>Know where your money goes.</h1><p>Track income and expenses in one simple dashboard.</p></div><div class="month"><small>THIS MONTH</small><b id="month"></b></div></section>
+<section class="stats">
+<div class="card balance"><small>TOTAL BALANCE</small><strong id="balance">₹0</strong><span>Available balance</span></div>
+<div class="card income"><small>INCOME</small><strong id="income">₹0</strong><span>This month</span></div>
+<div class="card expense"><small>EXPENSES</small><strong id="expense">₹0</strong><span>This month</span></div>
+</section>
+<section class="layout">
+<div class="card transactions"><div class="title"><div><small>TRANSACTIONS</small><h2>Recent activity</h2></div><input id="search" placeholder="Search..."></div><div id="list"></div></div>
+<div class="card"><small>SPENDING BREAKDOWN</small><h2>Where it goes</h2><div id="breakdown"></div></div>
+</section>
+</div>
+<div id="modal" class="modal"><form class="modalBox" id="form"><button type="button" class="close" id="close">×</button><small>NEW TRANSACTION</small><h2>Add transaction</h2><input id="name" placeholder="Description" required><select id="type"><option value="expense">Expense</option><option value="income">Income</option></select><select id="category"><option>Food</option><option>Transport</option><option>Shopping</option><option>Bills</option><option>Entertainment</option><option>Salary</option><option>Other</option></select><input id="amount" type="number" min="1" placeholder="Amount (₹)" required><input id="date" type="date" required><button class="save">Save transaction</button></form></div>
+<div id="toast"></div><script src="app.js"></script></body></html>
