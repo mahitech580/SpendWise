@@ -48,7 +48,7 @@ def test_create_and_list_transaction(client):
         {"category": " "},
         {"amount": 0},
         {"amount": -10},
-        {"amount": float("nan")},
+        {"amount": "NaN"},
         {"date": "2026-02-30"},
         {"date": "19-11-2026"},
         {"unexpected": "not accepted"},
