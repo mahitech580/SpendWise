@@ -28,3 +28,9 @@ jobs:
         run: python -m compileall -q backend
       - name: Run API tests
         run: python -m pytest -q backend/tests
+      - name: Check browser scripts
+        run: |
+          node --check app.js
+          node --check frontend/app.js
+      - name: Run frontend safety tests
+        run: node --test tests/spendwise-frontend.test.cjs
