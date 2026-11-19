@@ -3,8 +3,14 @@
 const STORAGE_KEY = "spendwise";
 const $ = id => document.getElementById(id);
 
+function todayISO() {
+  const now = new Date();
+  const local = new Date(now.getTime() - now.getTimezoneOffset() * 60000);
+  return local.toISOString().slice(0, 10);
+}
+
 function isValidDate(value) {
-  if (typeof value !== "string" || !/^\\d{4}-\\d{2}-\\d{2}$/.test(value)) {
+  if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(value)) {
     return false;
   }
   const timestamp = Date.parse(value + "T00:00:00Z");
@@ -149,15 +155,15 @@ function toast(message) {
   const element = $("toast");
   element.textContent = message;
   element.classList.add("show");
-  clearTimeout(toast.timer);
-  toast.timer = setTimeout(() => element.classList.remove("show"), 2200);
+  clearTimeout(element.timer);
+  element.timer = setTimeout(() => element.classList.remove("show"), 2200);
 }
 
 $("month").textContent = new Date().toLocaleDateString("en-IN", {
   month: "long",
   year: "numeric"
 });
-$("date").value = new Date().toISOString().slice(0, 10);
+$("date").value = todayISO();
 $("addTop").addEventListener("click", () => $("modal").classList.add("show"));
 $("close").addEventListener("click", () => $("modal").classList.remove("show"));
 $("search").addEventListener("input", render);
@@ -191,7 +197,7 @@ $("form").addEventListener("submit", event => {
   });
   save();
   $("form").reset();
-  $("date").value = new Date().toISOString().slice(0, 10);
+  $("date").value = todayISO();
   $("modal").classList.remove("show");
   toast("Transaction saved ✓");
 });
