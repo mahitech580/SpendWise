@@ -90,3 +90,11 @@ test("user-controlled descriptions and categories are HTML escaped before render
   assert.match(elements.get("list").innerHTML, /&lt;svg/);
   assert.doesNotMatch(elements.get("list").innerHTML, /<img|<svg/);
 });
+
+
+test("money formatting preserves decimal transaction amounts", () => {
+  const { context } = loadApp("[]");
+
+  assert.equal(vm.runInContext("money(1234.56)", context), "₹1,234.56");
+  assert.equal(vm.runInContext("money(0.5)", context), "₹0.5");
+});
