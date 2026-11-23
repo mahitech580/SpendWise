@@ -75,7 +75,7 @@ function save() {
 function money(value) {
   const amount = Number(value);
   const safeAmount = Number.isFinite(amount) ? amount : 0;
-  return "₹" + safeAmount.toLocaleString("en-IN", { maximumFractionDigits: 0 });
+  return "₹" + safeAmount.toLocaleString("en-IN", { maximumFractionDigits: 2 });
 }
 
 function escapeHTML(value) {
